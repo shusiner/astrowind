@@ -13,13 +13,15 @@ import Analytics  from "~/components/common/Analytics.astro"
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
 import type { MetaData as MetaDataType } from '~/types';
+import { getLangFromUrl } from '~/i18n/utils';
 
 export interface Props {
   metadata?: MetaDataType;
 }
 
+const language = getLangFromUrl(Astro.url);
 const { metadata = {} } = Astro.props;
-const { language, textDirection } = I18N;
+const { textDirection } = I18N;
 ---
 
 <!DOCTYPE html>

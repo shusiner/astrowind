@@ -1,6 +1,6 @@
 import slugify from 'limax';
 
-import { SITE, APP_BLOG } from '~/utils/config';
+import { SITE, APP_BLOG, I18N } from '~/utils/config';
 
 import { trim } from '~/utils/utils';
 
@@ -60,8 +60,7 @@ export const getPermalink = (slug = '', type = 'page'): string => {
       permalink = createPath(slug);
       break;
   }
-
-  return definitivePermalink(permalink);
+  return definitivePermalink(I18N.language === 'en' ? '' : '/ch' + permalink);
 };
 
 /** */

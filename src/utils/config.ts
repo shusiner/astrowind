@@ -18,7 +18,7 @@ export interface MetaDataConfig extends Omit<MetaData, 'title'> {
   };
 }
 export interface I18NConfig {
-  language: string;
+  language: "en" | "ch";
   textDirection: string;
   dateFormatter?: Intl.DateTimeFormat;
 }

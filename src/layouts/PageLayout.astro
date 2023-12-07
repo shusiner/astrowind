@@ -4,10 +4,14 @@ import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
 
-import { headerData, footerData } from '~/navigation';
+import { footerData } from '~/navigation';
 
 import type { MetaData } from '~/types';
+import { getPermalink } from '~/utils/permalinks';
+import { getLangFromUrl, useTranslations } from '~/i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 export interface Props {
   metadata?: MetaData;
   enableAnnouncement?: boolean;
@@ -25,7 +29,12 @@ const { metadata, enableAnnouncement } = Astro.props;
     )
   }
   <slot name="header">
-    <Header {...headerData} isSticky showLangToggle showToggleTheme />
+    <Header
+      isSticky
+      showLangToggle
+      showToggleTheme
+      actions={[{ text: t('contact_us'), href: getPermalink('/contact') }]}
+    />
   </slot>
   <main>
     <slot />

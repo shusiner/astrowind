@@ -2,7 +2,7 @@
 import { getLangFromUrl } from '~/i18n/utils';
 
 const currentLang = getLangFromUrl(Astro.url);
-console.log(Astro.url)
+// console.log(Astro.url)
 const switchLang = currentLang === 'en' ? '中文' : 'English'
 const switchLangURL = currentLang === 'en' ? 'ch' : ''
 

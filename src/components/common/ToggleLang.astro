@@ -1,0 +1,32 @@
+---
+import { getLangFromUrl } from '~/i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+console.log(Astro.url)
+const switchLang = currentLang === 'en' ? '中文' : 'English'
+const switchLangURL = currentLang === 'en' ? 'ch' : ''
+
+export interface Props {
+  label?: string;
+  class?: string;
+  iconClass?: string;
+  lang?: string;
+}
+
+const {
+  label = 'Toggle between Dark and Light mode',
+  class:
+    className = 'text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center',
+  iconClass = 'h-6',
+} = Astro.props;
+---
+
+{
+  (
+    <a href={`/${switchLangURL}`}>
+      <button type="button" class={className} aria-label={label}>
+        <div class={iconClass}>{switchLang}</div>
+      </button>
+    </a>
+  )
+}

@@ -8,6 +8,7 @@ import Button from "~/components/ui/Button.astro"
 import { getHomePermalink } from "~/utils/permalinks";
 import { trimSlash, getAsset } from "~/utils/permalinks";
 import type { CallToAction } from "~/types";
+import ToggleLang from "../common/ToggleLang.astro";
 
 interface Link {
   text?: string;
@@ -31,6 +32,7 @@ export interface Props {
   isFullWidth?: boolean;
   showToggleTheme?: boolean;
   showRssFeed?: boolean;
+  showLangToggle?: boolean;
   position?: string;
 }
 
@@ -43,6 +45,7 @@ const {
   isFullWidth = false,
   showToggleTheme = false,
   showRssFeed = false,
+  showLangToggle = false,
   position = "center",
 } = Astro.props;
 
@@ -140,6 +143,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
               </a>
             )
           }
+          {showLangToggle && <ToggleLang />}
         </div>
         {
           actions?.length ? (
